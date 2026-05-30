@@ -3,19 +3,18 @@ import { DefaultLayout } from './layouts/DefaultLayout';
 import { Typography } from '../components/Typography';
 import { Button } from '../components/Button';
 import { Link } from 'react-router';
+import { Hero } from '../components/Hero';
 
 interface ErrorCardLayoutProps {
   children: React.ReactNode;
 }
 
 const ErrorCardLayout: React.FC<ErrorCardLayoutProps> = ({ children }) => {
+  const left = <>{children}</>;
+
   return (
     <DefaultLayout>
-      <div className="min-h-screen w-full flex items-center justify-center p-4">
-        <div className="w-full max-w-sm space-y-6 p-8 rounded-2xl border border-(--background-200) shadow-sm">
-          {children}
-        </div>
-      </div>
+      <Hero left={left} />
     </DefaultLayout>
   );
 };
@@ -32,13 +31,10 @@ export const ErrorPage: React.FC = () => {
         <Typography variant='h2' size='3xl'>
           {error.statusText}
         </Typography>
-        <Typography>
-          {error.data}
-        </Typography>
-        <Link to='/' >
-          <Button className='w-full'>
-            Home
-          </Button>
+        <Typography>{error.data}</Typography>
+        <div className='h-8' />
+        <Link to='/'>
+          <Button>Home</Button>
         </Link>
       </ErrorCardLayout>
     );
@@ -50,12 +46,8 @@ export const ErrorPage: React.FC = () => {
         <Typography variant='h1' size='5xl' className='text-center'>
           Error
         </Typography>
-        <Typography>
-          {error.message}
-        </Typography>
-        <Typography>
-          The stack trace is:
-        </Typography>
+        <Typography>{error.message}</Typography>
+        <Typography>The stack trace is:</Typography>
         <pre>{error.stack}</pre>
       </ErrorCardLayout>
     );
