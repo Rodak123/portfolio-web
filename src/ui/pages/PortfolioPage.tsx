@@ -28,21 +28,18 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
 
 interface PortfolioCardProps {
   title: string;
-  span?: 1 | 2 | 3;
+  className?: string;
   children?: React.ReactNode;
 }
 
 const PortfolioCard: React.FC<PortfolioCardProps> = ({
   title,
   children,
-  span = 1,
+  className,
 }) => {
   return (
     <div
-      className={cm(
-        'bg-[#0005] hover:bg-bg-100 p-2 rounded border',
-        `row-span-${span}`,
-      )}
+      className={cm('bg-[#0005] hover:bg-bg-100 p-2 rounded border', className)}
     >
       <Typography size='3xl'>
         <span className='font-bold'>#</span> {title}
@@ -69,14 +66,14 @@ export const PortfolioPage: React.FC = () => {
       </Typography>
       <Link
         to={ROUTES.HOME}
-        className='flex flex-row items-center gap-1 pointer-events-auto w-fit '
+        className='flex flex-row items-center gap-1 pointer-events-auto w-fit'
       >
         <ArrowLeftIcon size={24} />
         <Typography size='2xl'>Back</Typography>
       </Link>
       <div className='h-8' />
       <div className='h-full w-full grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-y-auto pointer-events-auto'>
-        <PortfolioCard title='Skills' span={2}>
+        <PortfolioCard title='Skills' className='row-span-2'>
           <p>These are some of my IT skills</p>
           <PortfolioSection title='Languages'>
             <p>
