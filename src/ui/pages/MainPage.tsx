@@ -102,13 +102,13 @@ export const MainPage: React.FC = () => {
         >
           Portfolio
         </Button>
-        <Button
+        {/* <Button
           variant='outline'
           size='lg'
           className='grow pointer-events-auto'
         >
           Articles & Projects
-        </Button>
+        </Button> */}
       </div>
       <Contacts contacts={contacts} />
     </div>
@@ -116,7 +116,7 @@ export const MainPage: React.FC = () => {
 
   const right = (
     <div style={{ height: '700px', position: 'relative' }}>
-      <CardSwap
+      {/* <CardSwap
         width={640}
         height={480}
         cardDistance={80}
@@ -135,13 +135,18 @@ export const MainPage: React.FC = () => {
           <h3>Card 3</h3>
           <p>Your content here</p>
         </Card>
-      </CardSwap>
+      </CardSwap> */}
     </div>
   );
 
   return (
     <DefaultLayout>
       <Hero left={left} right={right} />
+      <div className='absolute right-2 bottom-2'>
+        <a href='https://github.com/Rodak123/portfolio-web' target='_blank'>
+          <Typography>SOURCE</Typography>
+        </a>
+      </div>
     </DefaultLayout>
   );
 };
