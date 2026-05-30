@@ -2,7 +2,6 @@ import { useResponsive } from '../../libs/hooks/useResponsive';
 import { useTheme } from '../../libs/hooks/useTheme';
 import type { Contact } from '../../libs/types/contact';
 import { cm } from '../../libs/utils/cm';
-import { Button } from './Button';
 import { Typography } from './Typography';
 
 interface ContactProps {
@@ -12,10 +11,6 @@ interface ContactProps {
 const ContactVisual: React.FC<ContactProps> = ({ contact }) => {
   const { theme } = useTheme();
   const { isMobile } = useResponsive();
-
-  const handleClick = () => {
-    window.open(contact.url, '_blank');
-  };
 
   return (
     <a href={contact.url} target='_blank'>

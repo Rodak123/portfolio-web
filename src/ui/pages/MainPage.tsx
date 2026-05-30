@@ -4,7 +4,6 @@ import { Hero } from '../components/Hero';
 import { TextType } from '../components/TextType';
 import { Typography } from '../components/Typography';
 import { DefaultLayout } from './layouts/DefaultLayout';
-import { CardSwap, Card } from './../components/CardSwap';
 import { Contacts } from '../components/Contacts';
 import type { Contact } from '../../libs/types/contact';
 import { Button } from '../components/Button';
