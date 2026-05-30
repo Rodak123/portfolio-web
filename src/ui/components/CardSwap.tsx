@@ -34,7 +34,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       {...rest}
-      className={`absolute top-1/2 left-1/2 rounded-xl border border-white bg-black [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden] ${customClass ?? ''} ${rest.className ?? ''}`.trim()}
+      className={`absolute top-1/2 left-1/2 rounded bg-[#0005] hover:bg-bg-100 p-2 border [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden] ${customClass ?? ''} ${rest.className ?? ''}`.trim()}
     />
   ),
 );
@@ -205,11 +205,11 @@ export const CardSwap: React.FC<CardSwapProps> = ({
     if (pauseOnHover) {
       const node = container.current!;
       const pause = () => {
-        tlRef.current?.pause();
+        // tlRef.current?.pause();
         clearInterval(intervalRef.current);
       };
       const resume = () => {
-        tlRef.current?.play();
+        // tlRef.current?.play();
         intervalRef.current = window.setInterval(swap, delay);
       };
       node.addEventListener('mouseenter', pause);

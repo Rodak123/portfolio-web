@@ -29,7 +29,7 @@ export const Hero: React.FC<HeroProps> = ({ left, right }) => {
         <div
           className={cm(
             'absolute top-12 bottom-12 pointer-events-none',
-            !isMobile && 'left-12',
+            !isMobile && 'left-12 right-12',
             isMobile && 'px-4',
           )}
         >
@@ -37,7 +37,7 @@ export const Hero: React.FC<HeroProps> = ({ left, right }) => {
         </div>
       )}
       {isDesktop && right && (
-        <div className='absolute top-[5%] right-32'>{right}</div>
+        <div className='absolute top-[5%] right-48'>{right}</div>
       )}
     </div>
   );

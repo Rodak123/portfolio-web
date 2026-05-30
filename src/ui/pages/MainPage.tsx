@@ -10,6 +10,7 @@ import type { Contact } from '../../libs/types/contact';
 import { Button } from '../components/Button';
 import { useNavigate } from 'react-router';
 import { ROUTES } from '../../routes';
+import { shuffleArray } from '../../libs/utils/shuffleArray';
 
 export const MainPage: React.FC = () => {
   const navigate = useNavigate();
@@ -73,7 +74,7 @@ export const MainPage: React.FC = () => {
           Radek Titěra
         </Typography>
         <TextType
-          text={subtitles}
+          text={shuffleArray(subtitles)}
           typingSpeed={75}
           pauseDuration={1500}
           showCursor
@@ -81,7 +82,7 @@ export const MainPage: React.FC = () => {
           className='text-2xl'
         />
       </div>
-      <div className='pointer-events-auto p-2 rounded bg-bg-100 border'>
+      <div className='pointer-events-auto p-2 rounded bg-[#0005] border'>
         <p>
           Hello! I'm an passionate programmer with a burning desire to make
           games. I also love anything related to software engineering in
@@ -114,12 +115,14 @@ export const MainPage: React.FC = () => {
   );
 
   const right = (
-    <div style={{ height: '600px', position: 'relative' }}>
+    <div style={{ height: '700px', position: 'relative' }}>
       <CardSwap
-        cardDistance={60}
-        verticalDistance={70}
+        width={640}
+        height={480}
+        cardDistance={80}
+        verticalDistance={90}
         delay={5000}
-        pauseOnHover={false}
+        pauseOnHover={true}
       >
         <Card>
           <h3>Card 1</h3>
@@ -127,7 +130,6 @@ export const MainPage: React.FC = () => {
         </Card>
         <Card>
           <h3>Card 2</h3>
-          <p>Your content here</p>
         </Card>
         <Card>
           <h3>Card 3</h3>
