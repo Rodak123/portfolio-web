@@ -10,7 +10,8 @@ const buttonVariants = tv({
       accent: 'bg-accent-500 text-white hover:bg-accent-600 shadow-sm',
 
       neutral: 'bg-bg-200 text-text-950 hover:bg-bg-300',
-      outline: 'border border-bg-300 bg-transparent hover:bg-bg-100 text-text-950',
+      outline:
+        'border border bg-[#0005] hover:bg-bg-400 focus:bg-bg-400 text-text-950',
 
       inverted: 'bg-text-950 text-bg-50 hover:bg-text-800',
       ghost: 'hover:bg-bg-100 text-text-950',
@@ -29,25 +30,22 @@ const buttonVariants = tv({
 });
 
 interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-  VariantProps<typeof buttonVariants> {
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   as?: React.ElementType;
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
-  className,
-  variant,
-  size,
-  as: Component = 'button',
-  ...props
-}, ref) => {
-  return (
-    <Component
-      className={buttonVariants({ variant, size, className })}
-      ref={ref}
-      {...props}
-    />
-  );
-});
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, as: Component = 'button', ...props }, ref) => {
+    return (
+      <Component
+        className={buttonVariants({ variant, size, className })}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
 
 Button.displayName = 'Button';
