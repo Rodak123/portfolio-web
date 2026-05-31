@@ -65,6 +65,8 @@ https: //www.realtimecolors.com/?colors=eff6ee-080b06-b8d3a7-38703e-66b27d&fonts
   --color-accent-900: #ddeee2;
   --color-accent-950: #eef6f1;
 
+  --color-transparent-tint: #0005;
+
   --radius-border: 6px;
 
   --color-ui-bg: var(--color-bg-50);
@@ -136,6 +138,8 @@ https: //www.realtimecolors.com/?colors=eff6ee-080b06-b8d3a7-38703e-66b27d&fonts
     --color-accent-900: #112216;
     --color-accent-950: #09110b;
 
+    --color-transparent-tint: #fff5;
+
     --color-ui-border: var(--color-bg-200);
     --color-ui-bg: var(--color-bg-50);
     --color-ui-text: var(--color-text-950);
@@ -143,6 +147,10 @@ https: //www.realtimecolors.com/?colors=eff6ee-080b06-b8d3a7-38703e-66b27d&fonts
 
   body {
     @apply bg-ui-bg text-ui-text antialiased transition-colors duration-200;
+  }
+  
+  .bg-transparent-tint {
+    background: var(--color-transparent-tint);
   }
 }
 

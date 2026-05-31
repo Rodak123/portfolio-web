@@ -81,7 +81,7 @@ export const MainPage: React.FC = () => {
           className='text-2xl'
         />
       </div>
-      <div className='pointer-events-auto p-2 rounded bg-[#0005] border'>
+      <div className='pointer-events-auto p-2 rounded bg-transparent-tint hover:bg-bg-100 border'>
         <p>
           Hello! I'm an passionate programmer with a burning desire to make
           games. I also love anything related to software engineering in

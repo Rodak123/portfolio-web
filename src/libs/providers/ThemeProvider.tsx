@@ -5,25 +5,34 @@ import { resolveTheme } from '../utils/resolveTheme';
 
 interface ThemeProviderProps {
   defaultThemeMode: ThemeMode;
-  themeLSKey?: string;
   children: React.ReactNode;
+  themeLSKey?: string;
+  useLS?: boolean;
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, defaultThemeMode, themeLSKey = 'stored-theme' }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+  children,
+  defaultThemeMode,
+  themeLSKey = 'stored-theme',
+  useLS = false,
+}) => {
   const [themeMode, setThemeMode] = useState<ThemeMode>(() => {
-    const storedKey = localStorage.getItem(themeLSKey);
-    return (storedKey && storedKey in ThemeModes)
+    const storedKey = useLS ? localStorage.getItem(themeLSKey) : null;
+    return storedKey && storedKey in ThemeModes
       ? ThemeModes[storedKey as keyof typeof ThemeModes]
       : defaultThemeMode;
   });
 
   useEffect(() => {
+    const theme = resolveTheme(themeMode);
     const body = document.body;
     Object.values(Themes).forEach((val) => body.classList.remove(val));
-    body.classList.add(themeMode);
+    body.classList.add(theme);
 
-    const themeKey = Object.entries(Themes).find(([, val]) => val === themeMode)?.[0];
-    if (themeKey) localStorage.setItem(themeLSKey, themeKey);
+    const themeKey = Object.entries(Themes).find(
+      ([, val]) => val === themeMode,
+    )?.[0];
+    if (useLS && themeKey) localStorage.setItem(themeLSKey, themeKey);
   }, [themeMode, themeLSKey]);
 
   const changeTheme = (theme: Theme) => setThemeMode(theme);
@@ -34,11 +43,13 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, defaultT
   };
 
   return (
-    <ThemeContext.Provider value={{
-      theme: resolveTheme(themeMode),
-      changeTheme,
-      cycleTheme
-    }}>
+    <ThemeContext.Provider
+      value={{
+        theme: resolveTheme(themeMode),
+        changeTheme,
+        cycleTheme,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

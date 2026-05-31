@@ -39,7 +39,10 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
 }) => {
   return (
     <div
-      className={cm('bg-[#0005] hover:bg-bg-100 p-2 rounded border', className)}
+      className={cm(
+        'bg-transparent-tint hover:bg-bg-100 p-2 rounded border',
+        className,
+      )}
     >
       <Typography size='3xl'>
         <span className='font-bold'>#</span> {title}

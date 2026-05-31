@@ -11,7 +11,7 @@ const buttonVariants = tv({
 
       neutral: 'bg-bg-200 text-text-950 hover:bg-bg-300',
       outline:
-        'border border bg-[#0005] hover:bg-bg-400 focus:bg-bg-400 text-text-950',
+        'border border bg-transparent-tint hover:bg-bg-400 focus:bg-bg-400 text-text-950',
 
       inverted: 'bg-text-950 text-bg-50 hover:bg-text-800',
       ghost: 'hover:bg-bg-100 text-text-950',
