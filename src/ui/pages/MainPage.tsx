@@ -143,7 +143,7 @@ export const MainPage: React.FC = () => {
       <Hero left={left} right={right} />
       <div className='absolute right-2 bottom-2'>
         <a href='https://github.com/Rodak123/portfolio-web' target='_blank'>
-          <Typography>SOURCE</Typography>
+          <Typography>( SOURCE )</Typography>
         </a>
       </div>
     </DefaultLayout>
