@@ -1,3 +1,3 @@
 # portfolio-web
 
-My personal website with my contacts and articles.
+My personal website with my contacts.
