@@ -101,7 +101,7 @@ export const MainPage: React.FC = () => {
         >
           Portfolio
         </Button>
-        <a href='https://articles.titera.dev' target='_blank'>
+        <a href='https://articles.titera.dev'>
           <div className='flex flex-col justify-between items-center border gap-2 p-4 pointer-events-auto whitespace-nowrap rounded-(--radius-border) font-medium ring-offset-bg-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer bg-transparent-tint hover:bg-bg-400 focus:bg-bg-400 text-text-950'>
             <Typography className='break-keep text-center'>
               Articles & Projects
