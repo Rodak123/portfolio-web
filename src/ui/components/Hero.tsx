@@ -28,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({ left, right }) => {
       {left && (
         <div
           className={cm(
-            'absolute bottom-12 pointer-events-none',
+            'absolute bottom-12',
             !isMobile && 'top-12 left-12 right-12',
             isMobile && 'top-4 px-4',
           )}
