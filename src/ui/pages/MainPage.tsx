@@ -8,7 +8,7 @@ import { Contacts } from '../components/Contacts';
 import type { Contact } from '../../libs/types/contact';
 import { Button } from '../components/Button';
 import { useNavigate } from 'react-router';
-import { ROUTES } from '../../routes';
+import { ROUTE_PATHS } from '../../config';
 import { shuffleArray } from '../../libs/utils/shuffleArray';
 
 export const MainPage: React.FC = () => {
@@ -97,15 +97,21 @@ export const MainPage: React.FC = () => {
           variant='outline'
           size='lg'
           className='grow pointer-events-auto'
-          onClick={() => navigate(ROUTES.PORTFOLIO)}
+          onClick={() => navigate(ROUTE_PATHS.PORTFOLIO())}
         >
           Portfolio
         </Button>
+        <Button
+          variant='outline'
+          size='lg'
+          className='grow pointer-events-auto'
+          onClick={() => navigate(ROUTE_PATHS.PROJECTS())}
+        >
+          Projects
+        </Button>
         <a href='https://articles.titera.dev'>
           <div className='flex flex-col justify-between items-center border gap-2 p-4 pointer-events-auto whitespace-nowrap rounded-(--radius-border) font-medium ring-offset-bg-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer bg-transparent-tint hover:bg-bg-400 focus:bg-bg-400 text-text-950'>
-            <Typography className='break-keep text-center'>
-              Articles & Projects
-            </Typography>
+            <Typography className='break-keep text-center'>Articles</Typography>
           </div>
         </a>
       </div>
@@ -141,7 +147,7 @@ export const MainPage: React.FC = () => {
   return (
     <DefaultLayout>
       <Hero left={left} right={right} />
-      <div className='absolute right-2 bottom-2'>
+      <div className='absolute right-2 bottom-2 hidden md:block'>
         <a href='https://github.com/Rodak123/portfolio-web' target='_blank'>
           <Typography>SOURCE</Typography>
         </a>

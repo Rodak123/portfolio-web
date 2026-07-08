@@ -1,11 +1,9 @@
-import { Link } from 'react-router';
-import { useResponsive } from '../../libs/hooks/useResponsive';
 import { cm } from '../../libs/utils/cm';
 import { Hero } from '../components/Hero';
 import { Typography } from '../components/Typography';
 import { DefaultLayout } from './layouts/DefaultLayout';
-import { ROUTES } from '../../routes';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import { ROUTE_PATHS } from '../../config';
+import { TitleAndLink } from '../components/TitleAndLink';
 
 interface PortfolioSectionProps {
   title: string;
@@ -53,27 +51,13 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
 };
 
 export const PortfolioPage: React.FC = () => {
-  const { isMobile } = useResponsive();
-
   const left = (
     <div className={cm('w-full h-full flex flex-col')}>
-      <Typography
-        variant='h1'
-        size={isMobile ? '6xl' : '7xl'}
-        className={cm(
-          'tracking-widest text-start pointer-events-auto',
-          !isMobile && 'whitespace-nowrap',
-        )}
-      >
-        Radek Titěra
-      </Typography>
-      <Link
-        to={ROUTES.HOME}
-        className='flex flex-row items-center gap-1 pointer-events-auto w-fit'
-      >
-        <ArrowLeftIcon size={24} />
-        <Typography size='2xl'>Back</Typography>
-      </Link>
+      <TitleAndLink
+        title={'Radek Titěra'}
+        linkName='Home'
+        linkUrl={ROUTE_PATHS.HOME()}
+      />
       <div className='h-8' />
       <div className='h-full w-full grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-y-auto pointer-events-auto'>
         <PortfolioCard title='Skills' className='row-span-2'>
