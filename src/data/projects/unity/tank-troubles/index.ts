@@ -13,4 +13,5 @@ export const TankTrouble: Project = {
     width: 347,
     height: 194,
   },
+  offsiteRedirect: 'https://rodakdev.itch.io/tank-trouble',
 } as const;

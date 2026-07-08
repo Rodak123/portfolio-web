@@ -12,4 +12,5 @@ export const SlimeHoops: Project = {
     width: 315,
     height: 250,
   },
+  offsiteRedirect: 'https://rodakdev.itch.io/slime-hoops',
 } as const;

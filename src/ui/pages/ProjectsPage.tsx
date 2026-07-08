@@ -10,10 +10,11 @@ export const ProjectsPage: React.FC = () => {
   const items: Item[] = ORDERED_PROJECTS.map((project, index) => {
     return {
       id: `${project.slug}-${index}`,
+      name: project.name,
       width: project.masonryImage.width,
       height: project.masonryImage.height,
       img: project.masonryImage.image,
-      url: ROUTE_PATHS.PROJECT(project.slug),
+      url: project.offsiteRedirect ?? ROUTE_PATHS.PROJECT(project.slug),
     };
   });
 

@@ -12,4 +12,5 @@ export const ChronoLabEscape: Project = {
     width: 315,
     height: 250,
   },
+  offsiteRedirect: 'https://rodakdev.itch.io/chronolabescape',
 } as const;

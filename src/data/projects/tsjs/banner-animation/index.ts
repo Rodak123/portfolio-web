@@ -12,4 +12,5 @@ export const BannerAnimation: Project = {
     width: 1920,
     height: 1080,
   },
+  offsiteRedirect: 'https://github.com/Rodak123/BannerAnimation',
 } as const;

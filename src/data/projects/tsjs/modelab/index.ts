@@ -12,4 +12,5 @@ export const Modelab: Project = {
     width: 1024,
     height: 512,
   },
+  offsiteRedirect: 'https://github.com/DanielHaas21/Modelab',
 } as const;

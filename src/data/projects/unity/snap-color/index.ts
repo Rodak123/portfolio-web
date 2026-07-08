@@ -13,4 +13,6 @@ export const SnapColor: Project = {
     width: 1984,
     height: 1024,
   },
+  offsiteRedirect:
+    'https://www.reddit.com/r/AndroidClosedTesting/comments/1ogfh2p/looking_for_android_closedtesters_for_the_game/#lightbox',
 } as const;

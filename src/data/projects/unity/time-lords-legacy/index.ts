@@ -12,4 +12,5 @@ export const TimeLordsLegacy: Project = {
     width: 315,
     height: 250,
   },
+  offsiteRedirect: 'https://rodakdev.itch.io/time-lords-legacy',
 } as const;

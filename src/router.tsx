@@ -5,7 +5,6 @@ import { ErrorPage } from './ui/pages/ErrorPage';
 import { PortfolioPage } from './ui/pages/PortfolioPage';
 import { ROUTE_PATHS } from './config';
 import { ProjectsPage } from './ui/pages/ProjectsPage';
-import { ProjectPage } from './ui/pages/ProjectPage';
 
 export const router = createBrowserRouter([
   {
@@ -23,9 +22,9 @@ export const router = createBrowserRouter([
     ErrorBoundary: ErrorPage,
     element: <ProjectsPage />,
   },
-  {
-    path: ROUTE_PATHS.PROJECT(),
-    ErrorBoundary: ErrorPage,
-    element: <ProjectPage />,
-  },
+  // {
+  //   path: ROUTE_PATHS.PROJECT(),
+  //   ErrorBoundary: ErrorPage,
+  //   element: <ProjectPage />,
+  // },
 ]);

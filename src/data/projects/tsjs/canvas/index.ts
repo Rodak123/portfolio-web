@@ -12,4 +12,5 @@ export const Canvas: Project = {
     width: 408,
     height: 399,
   },
+  offsiteRedirect: 'https://github.com/Rodak123/canvas',
 } as const;

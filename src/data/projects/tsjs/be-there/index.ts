@@ -12,4 +12,5 @@ export const BeThere: Project = {
     width: 399,
     height: 357,
   },
+  offsiteRedirect: 'https://github.com/Rodak123/be-there',
 } as const;

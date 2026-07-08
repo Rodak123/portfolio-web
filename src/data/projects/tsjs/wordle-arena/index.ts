@@ -13,4 +13,5 @@ export const WordleArena: Project = {
     width: 512,
     height: 512,
   },
+  offsiteRedirect: 'https://github.com/Rodak123/wordle-arena',
 } as const;

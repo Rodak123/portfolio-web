@@ -13,4 +13,5 @@ export const DeepIgnition: Project = {
     width: 224,
     height: 317,
   },
+  offsiteRedirect: 'https://rodakdev.itch.io/deep-ignition',
 } as const;

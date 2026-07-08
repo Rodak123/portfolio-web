@@ -12,4 +12,5 @@ export const ExRouter: Project = {
     width: 519,
     height: 153,
   },
+  offsiteRedirect: 'https://github.com/Rodak123/ExRouter',
 } as const;

@@ -13,4 +13,5 @@ export const InfiniteRacer: Project = {
     width: 315,
     height: 250,
   },
+  offsiteRedirect: 'https://rodakdev.itch.io/infinite-racer',
 } as const;

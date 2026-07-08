@@ -6,7 +6,9 @@ import React, {
   useState,
 } from 'react';
 import { gsap } from 'gsap';
-import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom'; // Swapped useNavigate for Link
+import { Typography } from './Typography';
+import { cm } from '../../libs/utils/cm';
 
 const useMedia = (
   queries: string[],
@@ -62,9 +64,10 @@ const preloadImages = async (urls: string[]): Promise<void> => {
 
 export interface Item {
   id: string;
+  name: string;
   img: string;
   url: string;
-  width: number; // Added to calculate the correct aspect ratio
+  width: number;
   height: number;
 }
 
@@ -73,6 +76,7 @@ interface GridItem extends Item {
   y: number;
   w: number;
   h: number;
+  col: number;
 }
 
 interface MasonryProps {
@@ -81,10 +85,7 @@ interface MasonryProps {
   duration?: number;
   stagger?: number;
   animateFrom?: 'bottom' | 'top' | 'left' | 'right' | 'center' | 'random';
-  scaleOnHover?: boolean;
-  hoverScale?: number;
   blurToFocus?: boolean;
-  colorShiftOnHover?: boolean;
 }
 
 export const Masonry: React.FC<MasonryProps> = ({
@@ -93,12 +94,8 @@ export const Masonry: React.FC<MasonryProps> = ({
   duration = 0.6,
   stagger = 0.05,
   animateFrom = 'bottom',
-  scaleOnHover = true,
-  hoverScale = 0.95,
   blurToFocus = true,
-  colorShiftOnHover = false,
 }) => {
-  const navigate = useNavigate();
   const columns = useMedia(
     [
       '(min-width:1500px)',
@@ -159,12 +156,11 @@ export const Masonry: React.FC<MasonryProps> = ({
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = col * (columnWidth + gap);
 
-      // Calculate height relative to columnWidth to maintain aspect ratio
       const height = (child.height / child.width) * columnWidth;
       const y = colHeights[col];
 
       colHeights[col] += height + gap;
-      return { ...child, x, y, w: columnWidth, h: height };
+      return { ...child, x, y, w: columnWidth, h: height, col };
     });
   }, [columns, items, width]);
 
@@ -211,65 +207,76 @@ export const Masonry: React.FC<MasonryProps> = ({
     hasMounted.current = true;
   }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
 
-  const handleMouseEnter = (id: string, element: HTMLElement) => {
-    if (scaleOnHover) {
-      gsap.to(`[data-key="${id}"]`, {
-        scale: hoverScale,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-    }
-    if (colorShiftOnHover) {
-      const overlay = element.querySelector('.color-overlay') as HTMLElement;
-      if (overlay) gsap.to(overlay, { opacity: 0.3, duration: 0.3 });
-    }
-  };
-
-  const handleMouseLeave = (id: string, element: HTMLElement) => {
-    if (scaleOnHover) {
-      gsap.to(`[data-key="${id}"]`, {
-        scale: 1,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-    }
-    if (colorShiftOnHover) {
-      const overlay = element.querySelector('.color-overlay') as HTMLElement;
-      if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.3 });
-    }
-  };
+  const totalHeight =
+    grid.length > 0 ? Math.max(...grid.map((i) => i.y + i.h)) : 0;
 
   return (
     <div
       ref={containerRef}
       className='relative w-full h-full overflow-y-auto overflow-x-hidden pe-4'
     >
-      {grid.map((item) => (
-        <div
-          key={item.id}
-          data-key={item.id}
-          className='absolute box-content pointer-events-auto'
-          style={{ willChange: 'transform, width, height, opacity' }}
-          onClick={() => {
-            if (item.url.startsWith('http')) {
-              window.open(item.url, '_blank', 'noopener');
-            } else {
-              navigate(item.url);
-            }
-          }}
-          onMouseEnter={(e) => handleMouseEnter(item.id, e.currentTarget)}
-          onMouseLeave={(e) => handleMouseLeave(item.id, e.currentTarget)}
-        >
+      {grid.map((item) => {
+        const xOrigin =
+          item.col === 0 ? '0%' : item.col === columns - 1 ? '100%' : '50%';
+        const yOrigin = item.y === 0 ? '0%' : '50%';
+        const isExternal = item.url.startsWith('http');
+
+        const content = (
           <div
-            className='relative w-full h-full bg-cover bg-no-repeat bg-center bg-bg-50 rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] uppercase text-[10px] leading-[10px]'
-            style={{ backgroundImage: `url(${item.img})` }}
+            className='relative w-full h-full scale-100 group-hover:scale-[1.04] group-focus-within:scale-[1.04] bg-cover bg-no-repeat bg-center bg-bg-50 rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] group-hover:shadow-[0px_20px_60px_-10px_rgba(0,0,0,0.4)] group-focus-within:shadow-[0px_20px_60px_-10px_rgba(0,0,0,0.4)] uppercase text-[10px] leading-[10px] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]'
+            style={{
+              backgroundImage: `url(${item.img})`,
+              transformOrigin: `${xOrigin} ${yOrigin}`,
+            }}
           >
-            {colorShiftOnHover && (
-              <div className='color-overlay absolute inset-0 rounded-[10px] bg-gradient-to-tr from-pink-500/50 to-sky-500/50 opacity-0 pointer-events-none' />
+            <div
+              className={cm(
+                'absolute left-0 right-0 bottom-0 h-8 bg-bg-50/80 flex justify-center items-center transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100',
+              )}
+            >
+              <Typography>{item.name}</Typography>
+            </div>
+          </div>
+        );
+
+        const linkClassNames =
+          'block w-full h-full outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-[10px]';
+
+        return (
+          <div
+            key={item.id}
+            data-key={item.id}
+            className='absolute box-content pointer-events-auto overflow-visible group z-0 hover:z-20 focus-within:z-20'
+            style={{ willChange: 'transform, width, height, opacity' }}
+          >
+            {isExternal ? (
+              <a
+                href={item.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                title={item.name}
+                aria-label={`Open ${item.name} in a new tab`}
+                className={linkClassNames}
+              >
+                {content}
+              </a>
+            ) : (
+              <Link
+                to={item.url}
+                title={item.name}
+                aria-label={`Navigate to ${item.name}`}
+                className={linkClassNames}
+              >
+                {content}
+              </Link>
             )}
           </div>
-        </div>
-      ))}
+        );
+      })}
+
+      <div
+        style={{ height: totalHeight + 32, width: 1, pointerEvents: 'none' }}
+      />
     </div>
   );
 };

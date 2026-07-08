@@ -11,4 +11,6 @@ export interface Project {
 
   name: string;
   shortDescription: string;
+
+  offsiteRedirect: string;
 }

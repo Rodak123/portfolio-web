@@ -13,4 +13,5 @@ export const JustHexagons: Project = {
     width: 956,
     height: 637,
   },
+  offsiteRedirect: 'https://rodakdev.itch.io/just-hexagons',
 } as const;

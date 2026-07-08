@@ -13,4 +13,5 @@ export const Termitaire: Project = {
     width: 315,
     height: 250,
   },
+  offsiteRedirect: 'https://rodakdev.itch.io/termitaire',
 } as const;

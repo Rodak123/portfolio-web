@@ -13,4 +13,5 @@ export const BeachCleanup: Project = {
     width: 315,
     height: 250,
   },
+  offsiteRedirect: 'https://rodakdev.itch.io/beach-cleanup',
 } as const;

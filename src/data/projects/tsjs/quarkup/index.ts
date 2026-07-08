@@ -13,4 +13,5 @@ export const Quarkup: Project = {
     width: 768,
     height: 256,
   },
+  offsiteRedirect: 'https://github.com/Rodak123/quarkup',
 } as const;

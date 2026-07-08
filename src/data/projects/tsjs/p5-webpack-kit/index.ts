@@ -13,4 +13,5 @@ export const P5WebpackKit: Project = {
     width: 427,
     height: 92,
   },
+  offsiteRedirect: 'https://github.com/Rodak123/p5-webpack-kit',
 } as const;

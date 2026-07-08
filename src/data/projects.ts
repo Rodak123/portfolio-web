@@ -22,8 +22,8 @@ import { BannerAnimation } from './projects/tsjs/banner-animation';
 
 export const ORDERED_PROJECTS: Project[] = [
   TimeLordsLegacy,
-  JustHexagons,
   DeepIgnition,
+  JustHexagons,
   Termitaire,
   BeachCleanup,
   Quarkup,
