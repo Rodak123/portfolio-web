@@ -50,7 +50,7 @@ export const MainPage: React.FC = () => {
 
   const subtitles = [
     'Indie game developer;',
-    'Full-stack web developer;',
+    'Full-stack web dev;',
     'Anything IT learner;',
   ];
 
@@ -81,7 +81,12 @@ export const MainPage: React.FC = () => {
           className='text-2xl'
         />
       </div>
-      <div className='pointer-events-auto p-2 rounded bg-transparent-tint hover:bg-bg-100 border'>
+      <div
+        className={cm(
+          isMobile && 'h-45 overflow-y-auto',
+          'pointer-events-auto p-2 rounded bg-transparent-tint hover:bg-bg-100 border',
+        )}
+      >
         <p>
           Hello! I'm an passionate programmer with a burning desire to make
           games. I also love anything related to software engineering in
@@ -92,7 +97,7 @@ export const MainPage: React.FC = () => {
           Usually, I'm using Unity, React and Node for projects.
         </p>
       </div>
-      <div className='flex w-full flex-col gap-4'>
+      <div className='flex w-full flex-col gap-4 my-4'>
         <Button
           variant='outline'
           size='lg'
