@@ -38,7 +38,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
   return (
     <div
       className={cm(
-        'bg-transparent-tint hover:bg-bg-100 p-2 rounded border',
+        'bg-transparent-tint hover:bg-bg-100 p-2 rounded border overflow-y-auto',
         className,
       )}
     >
@@ -60,7 +60,7 @@ export const PortfolioPage: React.FC = () => {
       />
       <div className='h-8' />
       <div className='h-full w-full grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-y-auto pointer-events-auto'>
-        <PortfolioCard title='Skills' className='row-span-2'>
+        <PortfolioCard title='Skills'>
           <p>These are some of my IT skills</p>
           <PortfolioSection title='Languages'>
             <p>
@@ -156,6 +156,38 @@ export const PortfolioPage: React.FC = () => {
             <p>
               <span className='text-rose-500'>󰸐</span> I'm currently applying.
             </p>
+          </PortfolioSection>
+        </PortfolioCard>
+
+        <PortfolioCard title='Certificates'>
+          <PortfolioSection title='Epic Games Game Design Professional Certificate'>
+            <p>
+              I learned game design theory, the importance of testing and
+              balancing through iterative development, as well as an in-depth
+              introduction to Unreal Engine in level design, blueprint scripting
+              and audio development.
+            </p>
+            <a
+              href='https://www.coursera.org/account/accomplishments/specialization/946DAGSZLQHL'
+              target='_blank'
+              className='text-primary-600'
+            >
+              Show certificate.
+            </a>
+          </PortfolioSection>
+
+          <PortfolioSection title='B1 Preliminary (PET) - Grade A (B2 Level)'>
+            <p>
+              I got this certificate from completing multiple tests targeting
+              reading, writing, listening and speaking.
+            </p>
+            <a
+              href='https://www.linkedin.com/in/radek-titera/overlay/Certifications/201920407/treasury/?profileId=ACoAAD36-hEBhGpVVabVVTOm4dkanhGRekwpq0s'
+              target='_blank'
+              className='text-primary-600'
+            >
+              Show certificate.
+            </a>
           </PortfolioSection>
         </PortfolioCard>
 
