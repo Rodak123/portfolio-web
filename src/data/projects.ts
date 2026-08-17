@@ -19,8 +19,10 @@ import { ExRouter } from './projects/php/exrouter';
 import { BeThere } from './projects/tsjs/be-there';
 import { Canvas } from './projects/tsjs/canvas';
 import { BannerAnimation } from './projects/tsjs/banner-animation';
+import { Escapees } from './projects/unity/escapees';
 
 export const ORDERED_PROJECTS: Project[] = [
+  Escapees,
   TimeLordsLegacy,
   DeepIgnition,
   JustHexagons,
