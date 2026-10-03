@@ -153,9 +153,6 @@ export const PortfolioPage: React.FC = () => {
               <span className='text-amber-600'></span> Studying Applied
               informatics
             </p>
-            <p>
-              <span className='text-rose-500'>󰸐</span> I'm currently applying.
-            </p>
           </PortfolioSection>
         </PortfolioCard>
 
