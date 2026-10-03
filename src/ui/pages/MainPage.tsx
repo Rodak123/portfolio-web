@@ -58,7 +58,7 @@ export const MainPage: React.FC = () => {
     <div
       className={cm(
         isMobile ? 'w-full' : 'w-min',
-        'flex flex-col justify-between h-full',
+        'flex flex-col justify-start h-full',
       )}
     >
       <div>
@@ -81,6 +81,8 @@ export const MainPage: React.FC = () => {
           className='text-2xl'
         />
       </div>
+      <div className='grow' />
+      {/*
       <div
         className={cm(
           isMobile && 'h-45 overflow-y-auto',
@@ -97,6 +99,7 @@ export const MainPage: React.FC = () => {
           Usually, I'm using Unity, React and Node for projects.
         </p>
       </div>
+      */}
       <div className='flex w-full flex-col gap-4 my-4'>
         <Button
           variant='outline'

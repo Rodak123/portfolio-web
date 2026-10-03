@@ -13,7 +13,7 @@ export const Hero: React.FC<HeroProps> = ({ left, right }) => {
   const { isMobile, isDesktop } = useResponsive();
 
   return (
-    <div className='h-screen relative overflow-y-clip'>
+    <div className='min-h-screen relative overflow-y-auto'>
       <ShapeGrid
         shape='hexagon'
         squareSize={32}

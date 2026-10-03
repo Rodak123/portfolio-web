@@ -455,7 +455,15 @@ export const ShapeGrid: React.FC<ShapeGridProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className='w-full h-full border-none block'
-    ></canvas>
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: -1,
+      }}
+      className='border-none block'
+    />
   );
 };
